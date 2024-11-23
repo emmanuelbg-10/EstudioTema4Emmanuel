@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .selected {
+        background-color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <ul></ul>
+    <hr />
+    <button>Añadir al carrito</button>
+    <ul id="cart"></ul>
+
+    <script>
+      const array = ["Manzana", "Pera", "Melocoton", "Kiwi", "Plátano"];
+      const ul = document.querySelector("ul");
+      const carrito = document.getElementById("cart");
+      const button = document.querySelector("button");
+      array.forEach((element) => {
+        const li = document.createElement("li");
+        li.textContent = element;
+        li.style = "cursor: pointer";
+        li.addEventListener("click", (event) => {
+          event.target.classList.toggle("selected");
+        });
+        li.addEventListener("dblclick", (event) => {
+          event.target.remove();
+        });
+
+        ul.append(li);
+      });
+
+      button.addEventListener("click", () => {
+        [...document.querySelectorAll(".selected")].forEach((li) => {
+          carrito.append(li);
+        });
+      });
+    </script>
+  </body>
+</html>

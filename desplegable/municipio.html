@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="provincias.js"></script>
+    <script src="municipios.js"></script>
+  </head>
+  <body>
+    <h1>Provincias y Municipios Emmanuel</h1>
+    <form action="">
+      <select name="provincias" id="provincias"></select>
+
+      <p id="eligeMunicipio" hidden>
+        <select name="municipios" id="municipios"></select>
+      </p>
+      <script>
+        const provincia = document.getElementById("provincias");
+
+        [...PROVINCIAS].forEach((provincias) => {
+          const option = document.createElement("option");
+          option.textContent = provincias.nombre;
+          option.value = provincias.idProvincia;
+          provincia.append(option);
+        });
+
+        const eligeMunicipio = document.getElementById("eligeMunicipio");
+        provincia.addEventListener("change", () => {
+          eligeMunicipio.hidden = false;
+          const arrayFiltrado = MUNICIPIOS.filter(
+            (m) => m.idProvincia == provincia.value
+          );
+          const municipio = document.getElementById("municipios");
+          const nameMunicipio = PROVINCIAS.filter(
+            (p) => p.idProvincia == provincia.value
+          )[0].nombre;
+          municipio.innerHTML =
+            "<option value='' disabled selected>Elige una provincia de " +
+            nameMunicipio +
+            "</option>";
+          arrayFiltrado.forEach((element) => {
+            const option = document.createElement("option");
+            option.textContent = element.nombre;
+            option.value = element.idMunicipio;
+            municipio.append(option);
+          });
+        });
+      </script>
+      <p><button type="submit">Enviar</button></p>
+    </form>
+  </body>
+</html>

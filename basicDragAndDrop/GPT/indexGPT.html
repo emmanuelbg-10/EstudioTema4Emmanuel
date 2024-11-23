@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      .draggable {
+        padding: 10px;
+        margin: 5px;
+        background-color: lightblue;
+        cursor: grab;
+      }
+
+      .dropzone {
+        border: 2px dashed gray;
+        padding: 20px;
+        margin: 10px;
+        min-height: 50px;
+      }
+
+      .dropzone:hover {
+        border-color: blue;
+      }
+    </style>
+    <title>Drag and Drop</title>
+  </head>
+  <body>
+    <div id="draggable1" class="draggable" draggable="true">Elemento 1</div>
+    <div id="draggable2" class="draggable" draggable="true">Elemento 2</div>
+
+    <div id="dropzone1" class="dropzone">Zona de Soltar 1</div>
+    <div id="dropzone2" class="dropzone">Zona de Soltar 2</div>
+
+    <script>
+      function onDragStart(event) {
+        event.dataTransfer.setData("text/plain", event.target.id); // Guarda el ID del elemento arrastrado.
+        event.currentTarget.style.backgroundColor = "yellow"; // Cambia el color del elemento mientras es arrastrado (estético).
+      }
+
+      function onDragOver(event) {
+        event.preventDefault(); // Permite soltar el elemento al cancelar el comportamiento predeterminado.
+      }
+
+      function onDrop(event) {
+        const id = event.dataTransfer.getData("text"); // Recupera el ID del elemento arrastrado.
+        const draggableElement = document.getElementById(id); // Obtiene el elemento usando el ID.
+        const dropzone = event.target; // Identifica el contenedor donde se suelta.
+        dropzone.appendChild(draggableElement); // Mueve el elemento al contenedor destino.
+        draggableElement.style.backgroundColor = "lightblue"; // Cambia el color del elemento al soltarlo (estético).
+        event.dataTransfer.clearData(); // Limpia los datos transferidos.
+      }
+
+      document.querySelectorAll(".draggable").forEach((item) => {
+        item.addEventListener("dragstart", onDragStart); // Asigna el evento dragstart a los elementos arrastrables.
+      });
+
+      document.querySelectorAll(".dropzone").forEach((zone) => {
+        zone.addEventListener("dragover", onDragOver); // Permite que el contenedor acepte elementos arrastrados.
+        zone.addEventListener("drop", onDrop); // Maneja el evento de soltar en el contenedor.
+      });
+    </script>
+  </body>
+</html>

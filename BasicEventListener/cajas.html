@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #container {
+        background-color: lightblue;
+        width: 100%; /* El contenedor ocupa todo el ancho disponible */
+        min-height: 150px; /* Altura inicial mínima */
+        display: flex; /* Organiza los hijos en una fila */
+        gap: 10px; /* Espaciado entre los elementos hijos */
+        flex-wrap: wrap; /* Permite que los hijos bajen a la siguiente línea si no caben */
+        padding: 10px; /* Espaciado interno */
+        box-sizing: border-box; /* El padding no afecta el tamaño total */
+      }
+      div {
+        width: 20px;
+        height: 20px;
+        padding: 20px;
+        background-color: blue;
+      }
+
+      .red {
+        background-color: red;
+      }
+
+      .green {
+        background-color: green;
+      }
+
+      .green.red {
+        background-color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <button>Crear circulitos</button>
+    <div id="container"></div>
+    <script>
+      const container = document.getElementById("container");
+
+      const button = document.querySelector("button");
+
+      button.addEventListener("click", (event) => {
+        const div = document.createElement("div");
+        if (event.altKey) {
+          div.classList.add("red");
+        }
+        if (event.ctrlKey) {
+          div.classList.add("green");
+        }
+        div.addEventListener("click", removeDiv);
+        container.append(div);
+      });
+
+      function removeDiv() {
+        this.remove();
+      }
+    </script>
+  </body>
+</html>

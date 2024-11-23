@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #info {
+        background-color: lightblue;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Lista con array asociativo</h1>
+    <ul></ul>
+    <div id="info"></div>
+    <script>
+      const data = {
+        "Título 1": "Párrafo 1. Este es el contenido",
+        "Título 2": "Esta es la información del apartado 2.",
+        "Título 3":
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium perferendis totam odio voluptatibus ipsa quibusdam repellat tenetur perspiciatis, nihil sed, maiores pariatur rem obcaecati autem quam ea, alias modi? Sequi.",
+      };
+      const info = document.querySelector("#info");
+      const ul = document.querySelector("ul");
+      for (const title in data) {
+        const li = document.createElement("li");
+        li.textContent = title;
+        ul.append(li);
+      }
+
+      ul.addEventListener("mouseover", (event) => {
+        info.textContent = data[event.target.textContent];
+      });
+    </script>
+  </body>
+</html>
