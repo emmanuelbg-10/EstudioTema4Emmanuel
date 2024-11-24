@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Productos Drag and Drop</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="work.js" defer></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <h1>Productos en venta</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th>Precio</th>
+          <th>Cantidad</th>
+        </tr>
+      </thead>
+      <tbody class="dropzone">
+        <tr class="draggable" draggable="true" id="1">
+          <td class="name">Manzanas</td>
+          <td class="price">0.99€</td>
+          <td class="amount">2</td>
+        </tr>
+        <tr class="draggable" draggable="true" id="2">
+          <td class="name">Peras</td>
+          <td class="price">0.99€</td>
+          <td class="amount">4</td>
+        </tr>
+        <tr class="draggable" draggable="true" id="3">
+          <td class="name">Arroz</td>
+          <td class="price">2.23€</td>
+          <td class="amount">1</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h1>Productos Comprados</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th>Precio</th>
+          <th>Cantidad</th>
+        </tr>
+      </thead>
+      <tbody class="dropzone" id="dropzone2"></tbody>
+    </table>
+    <br />
+    <div></div>
+  </body>
+</html>

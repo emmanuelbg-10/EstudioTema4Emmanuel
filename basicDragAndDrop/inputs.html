@@ -11,38 +11,73 @@
         background-color: lightblue;
         cursor: grab;
       }
-
       .dropzone {
         border: 2px dashed gray;
         padding: 20px;
         margin: 10px;
         min-height: 50px;
       }
-
       .dropzone:hover {
         border-color: blue;
+      }
+      form {
+        background-color: red;
       }
     </style>
     <title>Drag and Drop con Inputs</title>
   </head>
   <body>
-    <!-- Contenedor envolvente para el input -->
-    <div id="draggableInput1" class="draggable" draggable="true">
-      <input type="text" />
+    <div id="draggableInput1">
+      <p>Zona de arrastrar</p>
+      <span class="draggable" draggable="true" id="input1">
+        <p>
+          *Nombre:
+          <input type="text" name="text" maxlength="20" required />
+          <span id="error-input1"></span>
+        </p>
+      </span>
+      <span class="draggable" draggable="true" id="input2">
+        <p>
+          *Edad:
+          <input
+            type="number"
+            name="number"
+            id="number"
+            min="18"
+            max="100"
+            required
+          />
+          <span id="error-input2"></span>
+        </p>
+      </span>
+      <span class="draggable" draggable="true" id="input3">
+        <p>
+          Nivel de idiotez:
+          <input type="range" name="range" min="0" max="10" value="5" />
+          <span id="error-input3"></span>
+        </p>
+      </span>
+      <span class="draggable" draggable="true" id="input4">
+        <p>
+          *Hombre: <input type="radio" name="radio" value="Hombre" required />
+        </p>
+        <p>
+          *Mujer: <input type="radio" name="radio" value="Mujer" required />
+        </p>
+        <span id="error-input4"></span>
+      </span>
     </div>
 
-    <div id="draggableInput2" class="draggable" draggable="true">
-      <input type="text" />
+    <div id="dropzone1">
+      Zona de Soltar
+      <form action="" id="formulario" class="dropzone">
+        <input type="button" name="boton" value="Validar" />
+      </form>
     </div>
-
-    <!-- Zonas de soltar -->
-    <div id="dropzone1" class="dropzone">Zona de Soltar 1</div>
-    <div id="dropzone2" class="dropzone">Zona de Soltar 2</div>
 
     <script>
       function onDragStart(event) {
         event.dataTransfer.setData("text/plain", event.target.id);
-        event.currentTarget.style.backgroundColor = "yellow";
       }
 
       function onDragOver(event) {
@@ -50,20 +85,18 @@
       }
 
       function onDrop(event) {
+        event.preventDefault();
         const id = event.dataTransfer.getData("text");
         const draggableElement = document.getElementById(id);
-        const dropzone = event.target;
-
-        // Asegúrate de que estás soltando en una zona válida
-        if (dropzone.classList.contains("dropzone")) {
+        const dropzone = event.target.closest(".dropzone");
+        dropzone.appendChild(draggableElement);
+        if (dropzone) {
           dropzone.appendChild(draggableElement);
-          draggableElement.style.backgroundColor = "lightblue";
         }
 
         event.dataTransfer.clearData();
       }
 
-      // Asignar dinámicamente eventos
       document.querySelectorAll(".draggable").forEach((item) => {
         item.addEventListener("dragstart", onDragStart);
       });
@@ -71,6 +104,31 @@
       document.querySelectorAll(".dropzone").forEach((zone) => {
         zone.addEventListener("dragover", onDragOver);
         zone.addEventListener("drop", onDrop);
+      });
+
+      const form = document.getElementById("formulario");
+
+      form.elements["boton"].addEventListener("click", (event) => {
+        // Iterar sobre cada uno de los span que contienen los inputs
+        [
+          ...document.querySelector(".dropzone").querySelectorAll("span"),
+        ].forEach((element) => {
+          // Seleccionamos todos los inputs dentro de cada span
+          const inputs = [...element.querySelectorAll("input")];
+          // Seleccionamos el span donde mostraremos el error
+          const error = element.querySelector("span");
+
+          // Iteramos sobre todos los inputs
+          inputs.forEach((input) => {
+            if (!input.checkValidity()) {
+              error.textContent = input.validationMessage; // Mostramos el mensaje de error
+            } else {
+              error.textContent = "Input OK"; // Si es válido, mostramos "Input OK"
+            }
+            console.log(input); // Depuración
+            console.log(error); // Depuración
+          });
+        });
       });
     </script>
   </body>

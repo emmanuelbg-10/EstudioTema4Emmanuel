@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Productos Drag and Drop</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <h1>Productos en venta</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th>Precio</th>
+          <th>Cantidad</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td
+            class="draggable"
+            id="Nombre1"
+            data-type="nombre"
+            draggable="true"
+          >
+            Manzanas
+          </td>
+          <td
+            class="draggable"
+            id="Precio1"
+            data-type="precio"
+            draggable="true"
+          >
+            0.99€
+          </td>
+          <td
+            class="draggable"
+            id="Cantidad1"
+            data-type="cantidad"
+            draggable="true"
+          >
+            2
+          </td>
+        </tr>
+        <tr>
+          <td
+            class="draggable"
+            id="Nombre2"
+            data-type="nombre"
+            draggable="true"
+          >
+            Peras
+          </td>
+          <td
+            class="draggable"
+            id="Precio2"
+            data-type="precio"
+            draggable="true"
+          >
+            0.99€
+          </td>
+          <td
+            class="draggable"
+            id="Cantidad2"
+            data-type="cantidad"
+            draggable="true"
+          >
+            4
+          </td>
+        </tr>
+        <tr>
+          <td
+            class="draggable"
+            id="Nombre3"
+            data-type="nombre"
+            draggable="true"
+          >
+            Arroz
+          </td>
+          <td
+            class="draggable"
+            id="Precio3"
+            data-type="precio"
+            draggable="true"
+          >
+            2.23€
+          </td>
+          <td
+            class="draggable"
+            id="Cantidad3"
+            data-type="cantidad"
+            draggable="true"
+          >
+            1
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h1>Productos Comprados</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th>Precio</th>
+          <th>Cantidad</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="dropzone" data-type="nombre"></td>
+          <td class="dropzone" data-type="precio"></td>
+          <td class="dropzone" data-type="cantidad"></td>
+        </tr>
+        <tr>
+          <td class="dropzone" data-type="nombre"></td>
+          <td class="dropzone" data-type="precio"></td>
+          <td class="dropzone" data-type="cantidad"></td>
+        </tr>
+        <tr>
+          <td class="dropzone" data-type="nombre"></td>
+          <td class="dropzone" data-type="precio"></td>
+          <td class="dropzone" data-type="cantidad"></td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

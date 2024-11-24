@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Validación de Edad</title>
+  </head>
+  <body>
+    <form>
+      <!-- Etiqueta para pedir la edad -->
+      <label> Ingresa tu edad: </label>
+      <!-- Campo de entrada para el número (edad), requerido -->
+      <input type="number" id="edad" required /> <br /><br />
+      <!-- Botón para ejecutar la validación -->
+      <button type="button" onclick="validarEdad()">Validar Edad</button>
+    </form>
+    <!-- Div para mostrar el mensaje de validación -->
+    <div id="mensaje"></div>
+
+    <script>
+      function validarEdad() {
+        // Obtener el campo de entrada y el contenedor del mensaje
+        const campoEdad = document.getElementById("edad");
+        const mensaje = document.getElementById("mensaje");
+
+        // Convertir el valor del campo de entrada a un número entero
+        const edad = parseInt(campoEdad.value);
+
+        // Verificar si el valor ingresado es un número válido
+        if (isNaN(edad)) {
+          // Establecer un mensaje de error si no es un número
+          campoEdad.setCustomValidity("Por favor, ingresa un número válido.");
+        } else if (edad < 18) {
+          // Establecer un mensaje de error si la edad es menor a 18
+          campoEdad.setCustomValidity("Debes tener al menos 18 años.");
+        } else {
+          // Si la edad es válida, limpiar cualquier mensaje de error previo
+          campoEdad.setCustomValidity("");
+          // Mostrar un mensaje de éxito
+          mensaje.innerHTML = "¡La edad es válida!";
+        }
+
+        // Mostrar el mensaje de validación (si hay un error)
+        campoEdad.reportValidity();
+      }
+    </script>
+  </body>
+</html>

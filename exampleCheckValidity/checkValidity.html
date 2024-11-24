@@ -1,0 +1,18 @@
+<html>
+  <body>
+    <input type="number" min="10" max="100" id="num" required />
+    <p id="output"></p>
+    <button onclick="validateInput()">Validate Number</button>
+    <script>
+      const output = document.getElementById("output");
+      function validateInput() {
+        let num = document.getElementById("num");
+        if (num.checkValidity() == false) {
+          output.innerHTML = num.validationMessage;
+        } else {
+          output.innerHTML = "Tu numero es: " + num.value;
+        }
+      }
+    </script>
+  </body>
+</html>

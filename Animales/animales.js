@@ -16,7 +16,6 @@ data.forEach(element => {
 
 function onDragStart(event) {
   event.dataTransfer.setData("text/plain", event.target.id); // Guarda el ID del elemento arrastrado.
-  // event.currentTarget.style.backgroundColor = "yellow"; // Cambia el color del elemento mientras es arrastrado (estético).
 }
 
 function onDragOver(event) {

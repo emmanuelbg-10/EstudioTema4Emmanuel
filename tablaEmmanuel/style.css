@@ -1,0 +1,27 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+table, th, td {
+  border: 1px solid black;
+}
+tbody {
+  min-height: 150px; /* Define un espacio mínimo */
+  display: block;    /* Permite usar height/scroll si es necesario */
+  width: 100%;
+}
+td {
+  height: 50px;
+  text-align: center;
+}
+tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+div {
+  background-color: lightblue;
+  display: block; 
+  height: 50px;
+}

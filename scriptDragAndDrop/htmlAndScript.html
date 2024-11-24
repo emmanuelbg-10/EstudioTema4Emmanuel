@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #item1 {
+        width: 50px;
+        height: 50px;
+        background-color: red;
+      }
+
+      #item2 {
+        width: 50px;
+        height: 50px;
+        background-color: blue;
+      }
+
+      .dropzone {
+        width: 200px;
+        height: 200px;
+        border: 2px dashed gray;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="item1" class="draggable" draggable="true">Item 1</div>
+    <div id="item2" class="draggable" draggable="true">Item 2</div>
+
+    <div class="dropzone"></div>
+
+    <div class="dropzone"></div>
+
+    <script>
+      function onDragStart(event) {
+        event.dataTransfer.setData("text/plain", event.target.id);
+      }
+
+      function onDragOver(event) {
+        event.preventDefault();
+      }
+
+      function onDrop(event) {
+        event.preventDefault();
+        const id = event.dataTransfer.getData("text");
+        const draggableElement = document.getElementById(id);
+        const dropzone = event.target.closest(".dropzone");
+        if (dropzone) {
+          dropzone.appendChild(draggableElement);
+        }
+
+        event.dataTransfer.clearData();
+      }
+
+      document.querySelectorAll(".draggable").forEach((item) => {
+        item.addEventListener("dragstart", onDragStart);
+      });
+
+      document.querySelectorAll(".dropzone").forEach((zone) => {
+        zone.addEventListener("dragover", onDragOver);
+        zone.addEventListener("drop", onDrop);
+      });
+    </script>
+  </body>
+</html>

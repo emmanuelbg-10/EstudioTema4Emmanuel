@@ -1,0 +1,33 @@
+
+table, tr, td, th{
+  border-collapse: collapse;
+  border: 1px, solid black;
+  padding: 50px;
+  margin: auto;
+}
+.draggable {
+  cursor: grab;
+}
+
+.draggable:active {
+  cursor: grabbing;
+}
+
+.dropzone[data-type="nombre"] {
+  background-color: #e0f7fa;
+  
+}
+
+.dropzone[data-type="precio"] {
+  background-color: #ffecb3;
+  
+}
+
+.dropzone[data-type="cantidad"] {
+  background-color: #dcedc8;
+  
+}
+
+.dropzone td {
+  border: none;
+}
