@@ -5,6 +5,12 @@ data.forEach(element => {
   span.id = 'animal_'+ element.code;
   span.title = element.name;
   span.draggable = "true";
+  span.addEventListener('click', (e) =>  {
+    if(e.altKey){
+      e.target.remove();
+      checkIfEmpty();
+    }
+  });
   divAnimales.append(span);
 });
 
@@ -24,8 +30,8 @@ function onDrop(event) {
   const categoria = data.filter( (d) => d.name === draggableElement.title)[0].category;
   if(categoria === dropzone.id){
     dropzone.appendChild(draggableElement); // Mueve el elemento al contenedor destino.
-    // draggableElement.style.backgroundColor = "lightblue"; // Cambia el color del elemento al soltarlo (estético).
     event.dataTransfer.clearData(); // Limpia los datos transferidos.
+    checkIfEmpty();
   } else {
     alert("Opcion no valida ");
   }
@@ -39,3 +45,12 @@ document.querySelectorAll(".panel").forEach((zone) => {
   zone.addEventListener("dragover", onDragOver); // Permite que el contenedor acepte elementos arrastrados.
   zone.addEventListener("drop", onDrop); // Maneja el evento de soltar en el contenedor.
 });
+
+
+function checkIfEmpty() {
+  if(divAnimales.childElementCount === 0){
+    const h2 = document.createElement('h2');
+    h2.textContent = '¡Lo conseguiste!';
+    divAnimales.append(h2);
+  }
+}
