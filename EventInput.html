@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" id="nombre" placeholder="Escribe algo..." />
+    <p id="mensaje"></p>
+
+    <script>
+      const input = document.getElementById("nombre");
+      const mensaje = document.getElementById("mensaje");
+
+      input.addEventListener("input", () => {
+        mensaje.textContent = `Has escrito: ${input.value}`;
+      });
+    </script>
+  </body>
+</html>

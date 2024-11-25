@@ -1,0 +1,35 @@
+1. Eventos del Mouse
+click: Se dispara cuando el usuario hace clic en un elemento.
+dblclick: Se dispara cuando el usuario hace doble clic en un elemento.
+mousedown: Se dispara cuando el botón del mouse se presiona.
+mouseup: Se dispara cuando el botón del mouse se suelta.
+mousemove: Se dispara cuando el mouse se mueve sobre un elemento.
+mouseenter: Se dispara cuando el mouse entra en el área de un elemento (no se propaga).
+mouseleave: Se dispara cuando el mouse sale del área de un elemento (no se propaga).
+mouseover: Se dispara cuando el mouse pasa por encima de un elemento (se propaga).
+mouseout: Se dispara cuando el mouse sale de un elemento (se propaga).
+
+
+2. Eventos del Teclado
+keydown: Se dispara cuando una tecla se presiona (incluye teclas especiales como Shift y Ctrl).
+keypress: Obsoleto, pero se usaba para detectar teclas "imprimibles". Ahora usa keydown.
+keyup: Se dispara cuando una tecla se suelta.
+
+
+3. Eventos de Formulario
+submit: Se dispara cuando un formulario es enviado.
+input: Se dispara cada vez que el valor de un campo cambia (en tiempo real).
+change: Se dispara cuando el usuario termina de cambiar el valor de un campo (y sale del campo).
+reset: Se dispara cuando un formulario es restablecido.
+invalid: Se dispara cuando un campo no cumple con las reglas de validación.
+select: Se dispara cuando el usuario selecciona texto dentro de un campo <input> o <textarea>.
+
+
+5. Eventos de Drag and Drop (Arrastrar y Soltar)
+drag: Se dispara mientras un elemento es arrastrado.
+dragstart: Se dispara al comenzar a arrastrar un elemento.
+dragend: Se dispara cuando termina la acción de arrastrar.
+dragover: Se dispara mientras un elemento es arrastrado sobre un destino válido.
+dragenter: Se dispara cuando un elemento arrastrado entra en un destino válido.
+dragleave: Se dispara cuando un elemento arrastrado sale de un destino válido.
+drop: Se dispara cuando un elemento arrastrado es soltado en un destino válido.
